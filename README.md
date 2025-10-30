@@ -66,5 +66,6 @@ A professional portfolio website for GameDev Ayaan, showcasing Unity game develo
 - **Text**: #fff
 
 ---
+<img width="500" height="500" alt="ChatGPT_Image_Jul_8__2025__04_16_58_PM-removebg-preview" src="https://github.com/user-attachments/assets/34ff231b-90a6-41f9-bccc-35825d62357b" />
 
-**© 2025 GameDev Ayaan** | Made with ❤️ for the game dev community
+_**GameDev Ayaan**_
