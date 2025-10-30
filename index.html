@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDev Ayaan - Unity Game Developer Portfolio</title>
+    <link rel="preload" as="image" href="icon.webp">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        .header { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); padding: 80px 0; text-align: center; }
+        .header h1 { font-size: 3.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header p { font-size: 1.3em; opacity: 0.9; margin-bottom: 30px; }
+        .header .location { font-size: 1.1em; opacity: 0.8; }
+        
+        /* Navigation */
+        .nav { background: #1a1a1a; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        .nav-links { display: flex; justify-content: center; gap: 30px; }
+        .nav-links a { color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; transition: all 0.3s; }
+        .nav-links a:hover { background: #3b82f6; }
+        
+        /* Sections */
+        .section { padding: 60px 0; }
+        .section h2 { font-size: 2.5em; text-align: center; margin-bottom: 50px; color: #3b82f6; }
+        
+        /* About */
+        .about { background: #111; }
+        .about-content { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center; }
+        .profile-img { width: 250px; height: 250px; border-radius: 50%; border: 4px solid #3b82f6; margin: 0 auto; overflow: hidden; }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+        .about-text { font-size: 1.1em; }
+        .about-text h3 { color: #3b82f6; margin-bottom: 15px; }
+        
+        /* Skills */
+        .skills { background: #0a0a0a; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .skill-card { background: #1a1a1a; padding: 30px; border-radius: 10px; text-align: center; border: 2px solid #333; transition: all 0.3s; }
+        .skill-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
+        .skill-card h3 { color: #3b82f6; margin-bottom: 15px; }
+        
+        /* Games */
+        .games { background: #111; }
+        .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+        .game-card { background: #1a1a1a; border-radius: 10px; overflow: hidden; border: 2px solid #333; transition: all 0.3s; }
+        .game-card:hover { border-color: #3b82f6; }
+        .game-embed { width: 100%; height: 200px; }
+        .game-info { padding: 20px; }
+        .game-info h3 { color: #3b82f6; margin-bottom: 10px; }
+        
+        /* Social Links */
+        .social { background: #0a0a0a; }
+        .social-row { display: grid; gap: 30px; margin-bottom: 30px; }
+        .social-row.three { grid-template-columns: repeat(3, 1fr); }
+        .social-row.one { grid-template-columns: 1fr; justify-items: center; }
+        .social-card { background: #1a1a1a; padding: 30px; border-radius: 10px; text-align: center; border: 2px solid #333; transition: all 0.3s; max-width: 350px; }
+        .social-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
+        .social-card a { color: #fff; text-decoration: none; display: block; }
+        .social-card h3 { color: #3b82f6; margin-bottom: 15px; font-size: 1.5em; }
+        .social-card .icon { width: 60px; height: 60px; margin: 0 auto 15px; position: relative; }
+        .social-card .icon svg { width: 100%; height: 100%; fill: #3b82f6; transition: all 0.3s; }
+        .social-card:hover .icon svg { fill: #fff; }
+        
+        /* Itch.io SVG Logo */
+        .itch-svg { width: 60px; height: 60px; filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(214deg) brightness(95%) contrast(119%); transition: all 0.3s; }
+        .social-card:hover .itch-svg { filter: brightness(0) saturate(100%) invert(100%); }
+        
+        /* Unity SVG Logo */
+        .unity-svg { width: 60px; height: 60px; filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(214deg) brightness(95%) contrast(119%); transition: all 0.3s; }
+        .social-card:hover .unity-svg { filter: brightness(0) saturate(100%) invert(100%); }
+        
+        /* Footer */
+        .footer { background: #1a1a1a; padding: 40px 0; text-align: center; }
+        .footer p { opacity: 0.7; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5em; }
+            .about-content { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { flex-direction: column; gap: 10px; }
+            .games-grid { grid-template-columns: 1fr; }
+            .social-row.three { grid-template-columns: 1fr; }
+            .social-card { max-width: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🎮 GameDev Ayaan</h1>
+            <p>Unity Game Developer & Content Creator</p>
+            <p class="location">📍 Pakistan | 1+ Years Experience</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#games">Games</a>
+                <a href="#social">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="profile-img">
+                    <img src="icon.webp" alt="GameDev Ayaan Profile" loading="eager">
+                </div>
+                <div class="about-text">
+                    <h3>Unity Game Developer</h3>
+                    <p>Welcome to my portfolio! I'm Ayaan, a passionate Unity game developer from Pakistan with over 1 year of experience creating engaging games and interactive experiences.</p>
+                    <br>
+                    <p>I specialize in Unity game development and love sharing my knowledge through YouTube devlogs and courses. My goal is to create fun, innovative games while helping others learn game development.</p>
+                    <br>
+                    <p>When I'm not coding games, you can find me creating devlogs, building community on Discord, or exploring new game development techniques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🎮 Unity Engine</h3>
+                    <p>1+ years of experience developing games in Unity. Proficient in C# scripting, physics, animations, and game mechanics.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>💻 C# Programming</h3>
+                    <p>I use C# for do all the coding stuff in my games this is the language used in Unity.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🎨 Game Design</h3>
+                    <p>Creating engaging gameplay mechanics, level design, and user experience optimization for better player engagement.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>📹 Content Creation</h3>
+                    <p>YouTube content creator sharing game development tutorials and courses to help aspiring developers learn Unity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="section games">
+        <div class="container">
+            <h2>My Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <iframe frameborder="0" src="https://itch.io/embed/3669343?bg_color=000000&amp;fg_color=ffffff&amp;link_color=1b60ff&amp;border_color=c90600" width="100%" height="167" class="game-embed"></iframe>
+                    <div class="game-info">
+                        <h3>Escape the Dadoo</h3>
+                        <p>An exciting Unity escape game where you must avoid the dangerous Dadoo! Test your reflexes and survival skills.</p>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <iframe frameborder="0" src="https://itch.io/embed/3475746?bg_color=000000&amp;fg_color=ffffff&amp;link_color=003da6&amp;border_color=bf0000" width="100%" height="167" class="game-embed"></iframe>
+                    <div class="game-info">
+                        <h3>Dodge the Red Ones</h3>
+                        <p>A fast-paced dodging game where you must avoid the red obstacles. How long can you survive?</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://gamedev-ayaan.itch.io/" target="_blank" style="background: #3b82f6; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-size: 1.1em;">🎮 View All Games on Itch.io</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links Section -->
+    <section id="social" class="section social">
+        <div class="container">
+            <h2>Connect With Me</h2>
+            <div class="social-row three">
+                <div class="social-card">
+                    <a href="https://www.youtube.com/@GameDev-Ayaan" target="_blank">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </div>
+                        <h3>YouTube Channel</h3>
+                        <p>Subscribe for Crazy devlogs in Urdu/Hindi.!</p>
+                    </a>
+                </div>
+                <div class="social-card">
+                    <a href="https://gamedev-ayaan.itch.io/" target="_blank">
+                        <div class="icon">
+                            <img src="itch.svg" alt="Itch.io" class="itch-svg">
+                        </div>
+                        <h3>Itch.io Games</h3>
+                        <p>Play my latest games and download projects. New releases regularly!</p>
+                    </a>
+                </div>
+                <div class="social-card">
+                    <a href="https://www.youtube.com/watch?v=YBRlwCjLNMQ" target="_blank">
+                        <div class="icon">
+                            <img src="unity.svg" alt="Unity" class="unity-svg">
+                        </div>
+                        <h3>Unity Beginner Course</h3>
+                        <p>Free comprehensive Unity course for beginners. Start your game dev journey!</p>
+                    </a>
+                </div>
+            </div>
+            <div class="social-row one">
+                <div class="social-card">
+                    <a href="https://discord.gg/jweY7j4Zcw" target="_blank">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                            </svg>
+                        </div>
+                        <h3>Discord Community</h3>
+                        <p>Join our game development community! Get help, share projects, and connect with fellow developers.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>A GameDev Ayaan Creation | © All rights reserved by GameDev Ayaan 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
